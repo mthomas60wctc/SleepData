@@ -44,22 +44,31 @@ if (resp == "1")
 }
 else if (resp == "2")
 {
-    // TODO: parse data file
+    //file reader
     StreamReader sr = new("data.txt");
+
+    //create variables for use in parsing data
     String[] lineSplit;
     String[] dateArray;
     String[] dayStrings;
     int[] days = {0, 0, 0, 0, 0, 0, 0};
     DateTime date;
+
     while(!sr.EndOfStream){
+        //separate date from data
         lineSplit = (sr.ReadLine() ?? "").Split(',');
+        //separate out individual dates in data
         dayStrings = lineSplit[1].Split('|');
+        //convert data from string to integers
         for (int i = 0; i < dayStrings.Length; i++){
             days[i] = Int32.Parse(dayStrings[i]);
         }
+        //split elements of the date
         dateArray = lineSplit[0].Split('/');
+        //convert string representations of date components into a DateTime Obejct
         date = new DateTime(Int32.Parse(dateArray[2]), Int32.Parse(dateArray[0]), Int32.Parse(dateArray[1]));
 
+        //Display Interface
         Console.WriteLine($"   Week of {date:MMM d, yyyy}");
         Console.WriteLine("===========================");
         Console.WriteLine("Sun|Mon|Tue|Wed|Thu|Fri|Sat");
@@ -69,8 +78,9 @@ else if (resp == "2")
             Console.Write($"|{days[i],3}");
         }
         Console.WriteLine("\n———————————————————————————");
-        Console.WriteLine($"Total:   {days.Sum()}");
-        Console.WriteLine($"Average: {(double)days.Sum()/7:n2}");
+        Console.WriteLine($"Total: {days.Sum()}");
+        //Does fancy math to output minutes instad of fractions of an hour
+        Console.WriteLine($"Average: {days.Sum()/7} hours, {(double)(days.Sum()%7)/7*60:n0} minutes");
         Console.WriteLine('\n');
     }
 }
