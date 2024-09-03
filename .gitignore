@@ -1,0 +1,9 @@
+/bin
+/obj
+/SleepData.generated.sln
+.vscode
+bin
+obj
+Properties
+appsettings.json
+data.txt
