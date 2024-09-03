@@ -63,12 +63,14 @@ else if (resp == "2")
         Console.WriteLine($"   Week of {date:MMM d, yyyy}");
         Console.WriteLine("===========================");
         Console.WriteLine("Sun|Mon|Tue|Wed|Thu|Fri|Sat");
-        Console.WriteLine("———+———+———+———+———+———+———");
+        Console.WriteLine("———————————————————————————");
         Console.Write($"{days[0], 3}");
         for (int i = 1; i < days.Length; i++){
             Console.Write($"|{days[i],3}");
         }
+        Console.WriteLine("\n———————————————————————————");
+        Console.WriteLine($"Total:   {days.Sum()}");
+        Console.WriteLine($"Average: {(double)days.Sum()/7:n2}");
         Console.WriteLine('\n');
-        
     }
 }
