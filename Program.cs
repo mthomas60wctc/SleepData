@@ -59,5 +59,16 @@ else if (resp == "2")
         }
         dateArray = lineSplit[0].Split('/');
         date = new DateTime(Int32.Parse(dateArray[2]), Int32.Parse(dateArray[0]), Int32.Parse(dateArray[1]));
+
+        Console.WriteLine($"   Week of {date:MMM d, yyyy}");
+        Console.WriteLine("===========================");
+        Console.WriteLine("Sun|Mon|Tue|Wed|Thu|Fri|Sat");
+        Console.WriteLine("———+———+———+———+———+———+———");
+        Console.Write($"{days[0], 3}");
+        for (int i = 1; i < days.Length; i++){
+            Console.Write($"|{days[i],3}");
+        }
+        Console.WriteLine('\n');
+        
     }
 }
